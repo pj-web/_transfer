@@ -1,0 +1,42 @@
+These settings are added in the DNS control panel for your domain.
+
+SPF Record: 
+This setting authorises our servers to send email from your domain.
+
+DKIM Record: 
+This is a digital signature on your domain that matches an internal 
+signature on our side, authenticating the email as being a genuine email.
+
+DMARC: 
+This is a setting that works with the two settings above and adds another 
+level of authentication. If you let me know when they are in place, I 
+will verify that they are set up correctly.
+
+
+--------------------------------------------------------------------------
+
+Here are the settings for your domain. Someone with access to your 
+website's hosting control panel will be able to make these changes. 
+
+
+DKIM Record:
+(Add as new TXT record)
+
+dkim._domainkey.tradingview.com. IN TXT "v=DKIM1; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+y7n+lBsfp3+7pVffifpk1C3cqRwAjH153QBcHdyPBlApKGD/5PPS9zzbUO5w3sKiiBLq4oJZXBACyPiQcaff5uDg6Mvo/n2JPW+nf/to8e0VJ+ztAqWt/IQKOFlB1JOwWks+wkN2HoPtM4T8Cqbg5ejhxCwmRpl1FFV3Biw/IwIDAQAB;"
+
+
+
+SPF Record:
+(Change existing TXT record)
+
+Change from:
+v=spf1 +a +mx include:_spf.google.com include:amazonses.com include:emarsys.us include:emsmtp.us include:spf.braintreegateway.com -all
+
+To:
+v=spf1 +a +mx include:_spf.google.com include:amazonses.com include:emarsys.us include:emsmtp.us include:spf.braintreegateway.com include:spf.newsletter.ie -all
+
+
+
+DMARC:
+(Already in place - no change)
+

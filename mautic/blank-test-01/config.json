@@ -1,0 +1,7 @@
+{
+  "name": "Blank-test-01",
+  "author": "Pavel Ivanov",
+  "authorUrl": "https://tradingview.com",
+  "builder": ["legacy", "grapesjsbuilder"],
+  "features": ["page", "email", "form"]
+}

@@ -1,0 +1,6 @@
+contact_key,contact_status,email,email_permission,email_status,gsm,gsm_permission,gsm_status,name,surname,gender,birth_date,segment,source,subscription_date,rfm_score,rfm_segment,rfm_mobile_score,rfm_mobile_segment,gsm_source,email_source,gsm_consent_date,email_consent_date,contact_type
+demo30@mailinator.com,A,demo30@mailinator.com,true,A,905330000000,false,A,Gemma,Ward,,,"","",0001-01-01,,,,,"","",2020-11-16 16:00:00.000,2020-11-16 16:00:00.000,
+cust00046@mailinator.com,A,cust00046@mailinator.com,true,A,905330000000,true,A,Henry,Condure,,,"","",0001-01-01,,,,,"","",2020-11-16 16:00:00.000,2020-11-16 16:00:00.000,
+demo16@mailinator.com,A,demo16@mailinator.com,true,A,905330000000,false,A,David,Arquette,,,"","",0001-01-01,,,,,"","",2020-11-16 16:00:00.000,2020-11-16 16:00:00.000,
+demo49@mailinator.com,A,demo49@mailinator.com,true,A,905330000000,true,A,Karl,Wolf,,,"","",0001-01-01,,,,,"","",2020-11-16 16:00:00.000,2020-11-16 16:00:00.000,
+demo55@mailinator.com,A,demo55@mailinator.com,true,A,905330000000,true,A,Macaulay,Culkin,,,"","",0001-01-01,,,,,"","",2020-11-16 16:00:00.000,2020-11-16 16:00:00.000,

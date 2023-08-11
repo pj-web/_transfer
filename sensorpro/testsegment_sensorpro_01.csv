@@ -1,0 +1,5 @@
+ChannelType,Email address,First name,Last name,Home country,Demographic.Locale,_id
+EMAIL,monstrodamus@yahoo.com,Pavel3,Ivanov3,RU,ru-RU,Profile-id-1
+EMAIL,pivanov@tradingview.com,Pavel,Ivanov,US,en-US,Profile-id-2
+EMAIL,insta.pj.05@gmail.com,Pavel2,Ivanov2,CN,zh-CN,Profile-id-3
+EMAIL,monstrodamus@yandex.ru,Pavel4,Ivanov4,ES,es-ES,Profile-id-4

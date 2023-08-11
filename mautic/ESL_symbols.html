@@ -1,0 +1,133 @@
+<!-- {{rds.tradingview.user_symbol_data('-1')[0].user_id|required}} -->
+{% set myvar = 0 %}
+{% foreach ticker in rds.tradingview.user_symbol_data(contact.561) limit 5 %}
+{%if ticker.market_update_time %}
+{% set myvar= myvar + 1 %}
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="plr-15" style="padding: 25px 40px;">
+			<table width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<th class="tflex" width="55" align="left" style="padding:0; vertical-align: top;">
+						<table width="100%" cellpadding="0" cellspacing="0">
+							<tr>
+								<td>
+									<table width="100%" cellpadding="0" cellspacing="0">
+										{% if ticker.logo_id %}
+										<tr>
+											<td class="ac">
+												<a style="text-decoration: none;" href="https://www.tradingview.com/chart/?symbol={{ticker.symbol_name}}" target="_blank"><img style="border-radius: 100%;" src="https://s3-symbol-logo.tradingview.com/{{ticker.logo_id}}--96.png" style="-ms-interpolation-mode: bicubic; height: auto; max-width: 38px; width: 38px;" width="38" alt="" border="0"></a>
+											</td>
+										</tr>
+										{% elseif ticker.currency_logo_id %}
+										<tr>
+											<td class="ac">
+												<table class="tc" width="100%" cellpadding="0" cellspacing="0">
+													<tr>
+														<td class="ac">
+															<table class="ib1" width="100%" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td style="padding: 0 0 3px;">
+																		<a style="text-decoration: none;" href="https://www.tradingview.com/chart/?symbol={{ticker.symbol_name}}" target="_blank">
+																			<img style="border-radius: 100%;" src="https://s3-symbol-logo.tradingview.com/{{ticker.base_currency_logo_id}}--96.png" style="-ms-interpolation-mode: bicubic; height: auto; max-width: 38px; width: 38px;" width="38" alt="" border="0">&nbsp;
+																		</a>
+																	</td>
+																</tr>
+															</table>
+															<table class="ib2" width="100%" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td>
+																		<a style="text-decoration: none;" href="https://www.tradingview.com/chart/?symbol={{ticker.symbol_name}}" target="_blank">
+																			<img style="border-radius: 100%;" src="https://s3-symbol-logo.tradingview.com/{{ticker.currency_logo_id}}--96.png" style="-ms-interpolation-mode: bicubic; height: auto; max-width: 38px; width: 38px;" width="38" alt="" border="0">
+																		</a>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										{% else %}
+										{% endif %}
+
+									</table>
+								</td>
+							</tr>
+						</table>
+					</th>
+					<th class="tflex" width="327" align="left" style="padding:0;">
+						<table width="100%" cellpadding="0" cellspacing="0">
+							<tr>
+
+								<td>
+									<table width="100%" cellpadding="0" cellspacing="0">
+										<tr>
+											<td class="ac" style="font:700 18px/24px Trebuchet MS, Arial, Helvetica, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color:#2962FF;">
+												<a style="color:#2962FF;text-decoration:none;" href="https://www.tradingview.com/chart/?symbol={{ticker.symbol_name}}" target="_blank">{{ticker.description}}</a>
+											</td>
+										</tr>
+										<tr>
+											<td class="ac">
+												<table class="tc" cellpadding="0" cellspacing="0">
+													<tr>
+														<td class="ac" style="font: 26px/30px Trebuchet MS, Arial, Helvetica, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color:#009688; vertical-align: top;">
+															<span style="color:#131722;">{{ ticker.last_formatted }}</span> &nbsp;
+															<span style="white-space: nowrap;">
+
+																{% if ticker.change_formatted < 0 %}
+																<span style="color:#EF5350">
+
+																{% else %}
+																<span>
+																{% endif %}
+																{{ ticker.change_formatted }}
+																</span>
+																 &nbsp;
+																{% if ticker.change_pct < 0 %}
+																<span style="color:#EF5350">
+																{% else %}
+																<span>
+																{% endif %}
+																{{ ticker.change_pct|round(2, 'ceil') }}%
+																</span>
+															</span>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										{%if ticker.market_update_time %}
+										<tr>
+											<td class="ac" style="font:400 14px/22px Trebuchet MS, Arial, Helvetica, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color:#B2B5BE;">
+												{{ ticker.market_update_time|localized_datetime(contact.12, 'medium') }} UTC-5. 1W change.
+											</td>
+										</tr>
+										{%endif %}
+									</table>
+								</td>
+							</tr>
+						</table>
+					</th>
+					<th class="tflex" width="140" align="left" style="padding:0;">
+						<table width="100%" cellpadding="0" cellspacing="0">
+							<tr>
+								<td class="pt-20">
+									<table width="100%" cellpadding="0" cellspacing="0">
+										<tr>
+											<td align="center" style="font:14px/22px Trebuchet MS, Arial, Helvetica, sans-serif; color:#2962FF; mso-padding-alt:9px 20px; border-radius: 4px; border: 1px solid #2962FF">
+												<a target="_blank" style="text-decoration:none; color:#2962FF; display:block; padding:9px 20px;" href="https://www.tradingview.com/chart/?symbol={{ticker.symbol_name}}{{'&amp;myvar='}}{{myvar}}">Open chart</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</th>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+{%endif %}
+{% endforeach %}

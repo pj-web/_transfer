@@ -1,0 +1,12 @@
+{% var products = $from("products").random().take(3).get();
+var carouselData = [];
+
+for(var i=0;i<products.length;i++) {
+    carouselData.push({
+        desc: '$ ' + products[i].price,
+        title: products[i].name,
+        mediaUrl: products[i].image_url
+    })
+}
+
+%}{%= JSON.stringify(carouselData) %}

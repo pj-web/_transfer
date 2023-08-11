@@ -1,0 +1,112 @@
+{% 
+  var flights = $from("$db.airlines_flights").get();
+  var airports = $from("$db.airlines_airports").get();
+  var flightPrices = $from("$db.airlines_flightprices").get();
+  var allTickets = $from("$db.airlines_tickets").where("contact_key","=",$Contact.contact_key).order("dept_date", "DESC").get();
+  
+  var airportCountry = []; //Example; airportCountry["A01"]="USA";
+  var airportName = []; //Example; airportName["A01"]="Sabiha Gökçen";
+  var flightAirports = []; //Example; flightAirports["F35"]="A12";
+  var codeToCountry = []; //Example; codeToCountry["SOF"]="Bulgaristan";
+  
+  for (var flight of flights) { 
+  //Create lookup array for flights to airport mapping 
+  flightAirports[flight.flight_id]=flight.to_airport;
+  }
+  
+  for (var airport of airports) { 
+  //Create lookup array for airport to country mapping 
+  airportCountry[airport.airport_id]=airport.country;
+  airportName[airport.airport_id]=airport.name;
+  }
+  
+  var customerFliedCountries = [];
+  var customerFlights = [];
+  
+  for (var ticket of allTickets) { 
+  customerFliedCountries.push(flightAirports[ticket.flight_id]);
+  customerFlights.push(ticket.flight_id);
+  }
+  %}
+  
+          {% for (var i= 0; i<3;i++) { %}
+          <tr>
+          <td> {%=airportCountry[flightAirports[allTickets[i].flight_id]]%} </td>
+          <td> {%=airportName[flightAirports[allTickets[i].flight_id]]%} </td>
+          <td align="center"> {%=allTickets[i].dept_date.substring(0,10)%}</td>
+          <td align="center"> {%=allTickets[i].flight_id%}</td>
+          </tr>
+          {%
+          }
+          %}
+          </tbody>
+      </table>
+  </p>
+  <p>
+      <a title="Airline Promotion" href="https://www.youtube.com/watch?v=d7V4VAuL-OI" target="_blank" rel="noopener"><img src="https://twhpublc3.ams3.digitaloceanspaces.com/69d560e3-eb9e-4db2-bb53-a1c5d084459d" alt="VideoCaption" width="359" height="182" /></a>
+  <br>
+  <br>Out of total {%=airports.length%} destinations, you have not ever flown to the below {%=airports.length-2-customerFliedCountries.length %} destinations with us:
+  </p>
+  <br>
+      <table border="0" cellpadding="0" cellspacing="0"  >
+          <tbody>
+          <tr>
+          <td align="center">
+          <table id="tables" border="1" cellpadding="0" cellspacing="0">
+          <tbody>
+          {% 
+          for(var airport of airports) 
+          {
+              if ((customerFliedCountries.indexOf(airport.airport_id) == -1) && (airport.airport_id != "A100")&& (airport.airport_id != "A101"))
+              {
+          %}
+              <tr>
+              <td align="center"> {%=airport.country%} </td>
+              </tr>
+          {%
+              }
+          }
+          %}
+          </tbody>
+      </table>
+  </p>
+  <p>
+  Please have a look at your special discounted prices to those destinations valid for the next three months
+  </p>
+  <br>
+      <table border="0" cellpadding="0" cellspacing="0"  >
+          <tbody>
+          <tr>
+          <td align="center">
+          <table border="1" cellpadding="0" cellspacing="0">
+          <tbody>
+          <table border="0" cellpadding="0" cellspacing="0"  >
+          <tbody>
+          <tr>
+          <td align="center">
+          <table id="tables" border="1" cellpadding="0" cellspacing="0">
+          <tbody>
+          <tr>
+          <td align="center" style="font-weight:bold"> Airport</td>
+          <td align="center" style="font-weight:bold"> Original Price </td>
+          <td align="center" style="font-weight:bold"> Discount Rate %</td>
+          <td align="center" style="font-weight:bold"> Discounted Price</td>
+          </tr>
+          {% 
+          for(var tickets of flightPrices) 
+          {
+              if (customerFlights.indexOf(tickets.flight_id) == -1)
+              {
+          %}
+              <tr>
+              <td> {%=airportName[flightAirports[tickets.flight_id]]%} </td>
+              <td align="center"> {%=tickets.price%} </td>
+              <td align="center"> {%=tickets.discount%} </td>
+              <td align="center"> {%=tickets.discount_price%} </td>
+              </tr>
+          {%
+              }
+          }
+          %}
+          </tbody>
+      </table>

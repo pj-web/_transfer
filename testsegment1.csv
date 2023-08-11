@@ -1,0 +1,4 @@
+ChannelType,Address,Location.Country,Demographic.Locale,User.UserId
+EMAIL,monstrodamus@yahoo.com,US,en-US,user-id-1
+EMAIL,insta.pj.05@gmail.com,ES,es-ES,user-id-2
+EMAIL,pivanov@disroot.org,CN,zh-CN,user-id-3

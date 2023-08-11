@@ -1,0 +1,6 @@
+ChannelType,Address,Location.Country,Demographic.Platform,Demographic.Make,User.UserId,Attributes.FavoriteBaseballTeam
+SMS,2065550182,CAN,Android,LG,example-user-id-1,Blue Jays
+APNS,1a2b3c4d5e6f7g8h9i0j1a2b3c4d5e6f,USA,iOS,Apple,example-user-id-2,Mariners
+EMAIL,john.stiles@example.com,USA,iOS,Apple,example-user-id-2,Dodgers
+GCM,4d5e6f1a2b3c4d5e6f7g8h9i0j1a2b3c,CHN,Android,Google,example-user-id-3,Giants
+EMAIL,wang.xiulan@example.com,CHN,Android,OnePlus,example-user-id-3,Angels
