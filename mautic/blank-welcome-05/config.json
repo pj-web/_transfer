@@ -1,0 +1,7 @@
+{
+  "name": "Blank-welcome-05",
+  "author": "Pavel Ivanov",
+  "authorUrl": "https://mautic.org",
+  "builder": ["legacy", "grapesjsbuilder"],
+  "features": ["page", "email", "form"]
+}
