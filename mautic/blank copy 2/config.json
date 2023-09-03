@@ -1,0 +1,7 @@
+{
+  "name": "Blank Test",
+  "author": "Pavel Ivanov",
+  "authorUrl": "https://mautic.org",
+  "builder": ["legacy"],
+  "features": ["email"]
+}

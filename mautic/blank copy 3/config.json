@@ -1,0 +1,7 @@
+{
+  "name": "Dark Test 3 + Inline",
+  "author": "Pavel Ivanov",
+  "authorUrl": "https://mautic.org",
+  "builder": ["legacy", "grapesjsbuilder"],
+  "features": ["page", "email", "form"]
+}
